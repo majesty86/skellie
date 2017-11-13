@@ -1,0 +1,34 @@
+<h1>NUZZLR</h1>
+
+<%= erb :'users/_hello' %>
+<%= erb :'_errors' %>
+
+<% if !logged_in? %>
+  <p>Register <a href="users/new">here</a> to upload your own animals to nuzzle!</p>
+  <p><a href="sessions/new">Login</a></p>
+<% else %>
+  <%= erb :'sessions/_delete' %>
+<% end %>
+
+<div class="animals-list-container">
+  <ul class="animals-list">
+
+    <% @animals.each do |animal| %>
+      <form method="post", action="/nuzzle">
+        <input type="hidden" name= "animal_id" value="<%= animal.id %>">
+        <input class="nuzzle-button" type="submit" value="NUZZL">
+      </form>
+
+      <li class="animals-list-item">
+        <a href="animals/<%= "#{animal.id}" %>">
+          <img class="animal-image" src="<%= animal.image_url %>">
+        </a>
+      </li>
+    <% end  %>
+  </ul>
+</div>
+
+<% if logged_in?  %>
+<%= erb :'animals/_new_animal' %>
+<% end %>
+
