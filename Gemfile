@@ -13,6 +13,7 @@ gem 'activerecord', '~>5.1.0'
 gem 'rake'
 gem 'bcrypt'
 gem 'extra_print'
+gem 'rpi_gpio'
 
 
 gem 'shotgun', '~>0.9.1'
